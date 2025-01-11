@@ -15,17 +15,22 @@ class Restaurante:
     def __str__(self):
         return f'{self._nome} | {self._categoria}'
     
-    def listar_restaurantes(): #método criado para listar os restaurantes contidos no array restaurantes[]. O for procura por restaurante dentro do array da classe e, para cada um, printa seu nome, categoria e ativo no f'string definido
+    @classmethod #@classmethod é para mostrar que o método é da Classe e não do Objeto que foi criado como instância. Coloca-se também 'cls" no argumento da função, como uma convenção
+    def listar_restaurantes(cls): #método criado para listar os restaurantes contidos no array restaurantes[]. O for procura por restaurante dentro do array da classe e, para cada um, printa seu nome, categoria e ativo no f'string definido
         print(f'{'Nome do restaurante'.ljust(25)} | {'Categoria'.ljust(25)} | {'Status'}')
-        for restaurante in Restaurante.restaurantes:
+        for restaurante in cls.restaurantes:
             print(f'{restaurante._nome.ljust(25)} | {restaurante._categoria.ljust(25)} | {restaurante.ativo}')
     #property é um decorator e é acessado por arroba @. O property permite modificar a forma como uma informação é lida - Ao invés de FALSE boolean, retornar, nesse cenário, inativo
     @property
     def ativo(self):
         return 'Ativo' if self._ativo else 'Inativo'
+    
+    def alternar_estado(self):
+        self._ativo = not self._ativo
         
 #na hora de declarar o objeto, basta colocar seus atributos na ordem em que foram definidos no self do construtor
 restaurante_praca = Restaurante('praça', 'Gourmet')
+restaurante_praca.alternar_estado()
 restaurante_pizza = Restaurante('pizza express', 'Italiana')
 
 #Ao usar o método dir() conseguimos enxergar todas as informações relacionados ao objeto da classe, desde os métodos padrão até os atributos definidos pelo desenvolvedor
