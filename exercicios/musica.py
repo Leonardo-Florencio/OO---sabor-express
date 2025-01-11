@@ -1,19 +1,18 @@
 class Musica:
-    nome = ''
-    artista = ''
-    duracao = int
+    musicas = []
+    def __init__(self, nome, artista, duracao):
+        self.nome = nome
+        self.artista = artista
+        self.duracao = duracao
+        Musica.musicas.append(self)
+    def __str__(self):
+        return(f'{self.nome} | {self.artista} | {self.duracao}')
+    def listar_musicas():
+        for musica in Musica.musicas:
+            print(f'{musica.nome} | {musica.artista} | {musica.duracao}')
     
-musica_bmth = Musica()
-musica_bmth.nome = 'Antivist'
-musica_bmth.artista = 'Bring Me The Horizon'
-musica_bmth.duracao = 203
+musica_bmth = Musica('Antivist','Bring Me the Horizon',203)
+musica_emicida = Musica('Acabou, mas tem...','Emicida',235)
+musica_LP = Musica('Casualty','Linkin Park',141)
 
-musica_emicida = Musica()
-musica_emicida.nome = 'Acabou, mas tem...'
-musica_emicida.artista = 'Emicida'
-musica_emicida.duracao = 235
-
-musica_LP = Musica()
-musica_LP.nome = 'Casualty'
-musica_LP.artista = 'Linkin Park'
-musica_LP.duracao = 141
+Musica.listar_musicas()
