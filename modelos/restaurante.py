@@ -19,9 +19,9 @@ class Restaurante:
     
     @classmethod #@classmethod é para mostrar que o método é da Classe e não do Objeto que foi criado como instância. Coloca-se também 'cls" no argumento da função, como uma convenção
     def listar_restaurantes(cls): #método criado para listar os restaurantes contidos no array restaurantes[]. O for procura por restaurante dentro do array da classe e, para cada um, printa seu nome, categoria e ativo no f'string definido
-        print(f'{'Nome do restaurante'.ljust(25)} | {'Categoria'.ljust(25)} | {'Status'}')
+        print(f'{'Nome do restaurante'.ljust(25)} | {'Categoria'.ljust(25)} | {'Avalição'.ljust(25)} | {'Status'}')
         for restaurante in cls.restaurantes:
-            print(f'{restaurante._nome.ljust(25)} | {restaurante._categoria.ljust(25)} | {restaurante.ativo}')
+            print(f'{restaurante._nome.ljust(25)} | {restaurante._categoria.ljust(25)} | {str(restaurante.media_avaliacoes).ljust(25)} | {restaurante.ativo}')
     #property é um decorator e é acessado por arroba @. O property permite modificar a forma como uma informação é lida - Ao invés de FALSE boolean, retornar, nesse cenário, inativo
     @property
     def ativo(self):

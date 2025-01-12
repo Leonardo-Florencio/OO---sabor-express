@@ -2,8 +2,8 @@ from modelos.restaurante import Restaurante #Faz-se a importação da classe atr
 
 restaurante_praca = Restaurante('praça', 'Gourmet')
 restaurante_praca.receber_avaliacao('Gui', 10)
-restaurante_praca.receber_avaliacao('Lais', 8)
-restaurante_praca.receber_avaliacao('Emy', 5)
+restaurante_praca.receber_avaliacao('Lais', 9)
+restaurante_praca.receber_avaliacao('Emy', 8)
 
 def main():
     Restaurante.listar_restaurantes()
