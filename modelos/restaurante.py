@@ -29,13 +29,13 @@ class Restaurante:
         self._ativo = not self._ativo
         
 #na hora de declarar o objeto, basta colocar seus atributos na ordem em que foram definidos no self do construtor
-restaurante_praca = Restaurante('praça', 'Gourmet')
-restaurante_praca.alternar_estado()
-restaurante_pizza = Restaurante('pizza express', 'Italiana')
+#restaurante_praca = Restaurante('praça', 'Gourmet')
+#restaurante_praca.alternar_estado()
+#restaurante_pizza = Restaurante('pizza express', 'Italiana')
 
 #Ao usar o método dir() conseguimos enxergar todas as informações relacionados ao objeto da classe, desde os métodos padrão até os atributos definidos pelo desenvolvedor
 #Ao usar o método vars() conseguimos enxergar todas as informações contidas nos atributos definidos
 
-Restaurante.listar_restaurantes()
+#Restaurante.listar_restaurantes()
 
 
