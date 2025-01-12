@@ -1,3 +1,4 @@
+from modelos.avaliacao import Avaliacao
 class Restaurante:
     restaurantes = []
     #utilizar o def __init__ para ser um construtor - Ou seja, quando o objeto for definido, deve ter as próprias informações
@@ -9,6 +10,7 @@ class Restaurante:
         self._nome = nome.title() #o método de string title() é utilizado para deixar a primeira letra maiúscula, mostrando que não é necessario usar um property pra esse tipo de coisa
         self._categoria = categoria
         self._ativo = False #utilização do underline _ é para indicar que é um atributo privado, que não deve ser acessado
+        self._avaliacao = []
         Restaurante.restaurantes.append(self) #método append utilizado para que, cada instância da classe quando criada, seja adicionada no array restaurantes[]
     # utilizado o método __str__ para que ele apresente o objeto em forma de texto. Ele deve receber um retorno, que irá buscar as informações dos atributos daquela instância para devolver em formato de texto 
     # como o método retorna string, é possível utilizar f-string para "estilizar" o retorno do texto 
@@ -27,6 +29,10 @@ class Restaurante:
     
     def alternar_estado(self):
         self._ativo = not self._ativo
+        
+    def receber_avaliacao(self, cliente, nota):
+        avaliacao = Avaliacao(cliente, nota)
+        self._avaliacao.append(avaliacao)
         
 #na hora de declarar o objeto, basta colocar seus atributos na ordem em que foram definidos no self do construtor
 #restaurante_praca = Restaurante('praça', 'Gourmet')
