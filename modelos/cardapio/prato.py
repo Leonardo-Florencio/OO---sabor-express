@@ -4,3 +4,6 @@ class Prato(ItemCardapio): #colocando a classe mãe "ItemCardápio" no argumento
     def __init__(self, nome, preco, descricao):
         super().__init__(nome, preco) #super é um objeto especial, que permite acessar os atributos de outra classe a partir de uma classe diferente
         self.descricao = descricao
+        
+    def __str__(self):
+        return self._nome
