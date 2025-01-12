@@ -33,7 +33,15 @@ class Restaurante:
     def receber_avaliacao(self, cliente, nota):
         avaliacao = Avaliacao(cliente, nota)
         self._avaliacao.append(avaliacao)
-        
+     
+    @property   
+    def media_avaliacoes(self):
+        if not self._avaliacao:
+            return 0
+        soma_das_notas = sum(avaliacao._nota for avaliacao in self._avaliacao) #ternário que soma apenas as notas de cada avaliação no array de avaliacoes
+        quantidade_de_notas = len(self._avaliacao)
+        media = round(soma_das_notas/quantidade_de_notas, 1)
+        return media
 #na hora de declarar o objeto, basta colocar seus atributos na ordem em que foram definidos no self do construtor
 #restaurante_praca = Restaurante('praça', 'Gourmet')
 #restaurante_praca.alternar_estado()
