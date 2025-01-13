@@ -9,4 +9,4 @@ class Prato(ItemCardapio): #colocando a classe mãe "ItemCardápio" no argumento
         return self._nome
     
     def aplicar_desconto(self):
-        self._preco -= (self._preco * 0.08)
+        self._preco -= (self._preco * 0.05)
