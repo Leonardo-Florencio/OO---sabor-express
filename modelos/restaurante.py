@@ -1,4 +1,5 @@
 from modelos.avaliacao import Avaliacao
+from modelos.cardapio.item_cardapio import ItemCardapio
 class Restaurante:
     restaurantes = []
     #utilizar o def __init__ para ser um construtor - Ou seja, quando o objeto for definido, deve ter as próprias informações
@@ -11,6 +12,7 @@ class Restaurante:
         self._categoria = categoria
         self._ativo = False #utilização do underline _ é para indicar que é um atributo privado, que não deve ser acessado
         self._avaliacao = []
+        self._cardapio = []
         Restaurante.restaurantes.append(self) #método append utilizado para que, cada instância da classe quando criada, seja adicionada no array restaurantes[]
     # utilizado o método __str__ para que ele apresente o objeto em forma de texto. Ele deve receber um retorno, que irá buscar as informações dos atributos daquela instância para devolver em formato de texto 
     # como o método retorna string, é possível utilizar f-string para "estilizar" o retorno do texto 
@@ -22,7 +24,7 @@ class Restaurante:
         print(f'{'Nome do restaurante'.ljust(25)} | {'Categoria'.ljust(25)} | {'Avalição'.ljust(25)} | {'Status'}')
         for restaurante in cls.restaurantes:
             print(f'{restaurante._nome.ljust(25)} | {restaurante._categoria.ljust(25)} | {str(restaurante.media_avaliacoes).ljust(25)} | {restaurante.ativo}')
-    #property é um decorator e é acessado por arroba @. O property permite modificar a forma como uma informação é lida - Ao invés de FALSE boolean, retornar, nesse cenário, inativo
+    #property é um decorator e é acessado por arroba @. O property permite modificar a forma como uma informação é lida - Ao invés de FALSE boolean, retornar, nesse cenário, inativo. Também indica um método que não fará alterações, apenas visualizações
     @property
     def ativo(self):
         return 'Ativo' if self._ativo else 'Inativo'
@@ -43,6 +45,22 @@ class Restaurante:
         quantidade_de_notas = len(self._avaliacao)
         media = round(soma_das_notas/quantidade_de_notas, 1)
         return media
+    
+    def adicionar_no_cardapio(self, item):
+        if isinstance(item, ItemCardapio): #método isinstance testa se foi criado uma instânica dessa classe e nesse caso, se sim, adiciona ao array _cardapio 
+            self._cardapio.append(item)
+    
+    @property
+    def exibir_cardapio(self):
+        print(f'Cardapio do restaurante {self._nome}\n')
+        for i, item in enumerate(self._cardapio, start=1):
+            if hasattr(item, 'descricao'):
+                mensagem_prato = f'{i}. Nome: {item._nome.ljust(25)} | Preço: R${item._preco} | Descrição: {item.descricao}'
+                print(mensagem_prato)
+            else:
+                mensagem_bebida = f'{i}. Nome: {item._nome.ljust(25)} | Preço: R${item._preco} | Tamanho: {item.tamanho}'
+                print(mensagem_bebida)
+        
 #na hora de declarar o objeto, basta colocar seus atributos na ordem em que foram definidos no self do construtor
 #restaurante_praca = Restaurante('praça', 'Gourmet')
 #restaurante_praca.alternar_estado()
